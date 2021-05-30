@@ -1,0 +1,408 @@
+ select  ?uri  where  {  ?uri  dbo:publisher  dbr:gmt_games  } 
+ select  distinct  ?uri  where  {  dbr:skype  dbo:developer  ?uri.  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:person  ;  dbo:birthplace  dbr:heraklion.  } 
+ select  distinct  ?uri  where  {  dbr:area_51  dbo:location  ?uri  .  ?uri  dbo:country  dbr:united_states.  } 
+ select  distinct  ?uri  where  {  dbr:new_york_city  dbo:leadername  ?uri  } 
+ select  distinct  ?uri  where  {  ?cave  rdf:type  dbo:cave  ;  dbo:location  ?uri  .  ?uri  rdf:type  dbo:country  }  group  by  ?uri  having  (  count(?cave)  >  2  ) 
+ select  distinct  ?uri  where  {  dbr:abraham_lincoln  dbo:deathplace  ?uri.  } 
+ select  distinct  ?uri  where  {  dbr:air_china  dbo:targetairport  ?uri  } 
+ select  distinct  ?uri  where  {  ?x  dbo:director  dbr:william_shatner  ;  dbo:starring  dbr:william_shatner  {  ?x  dbo:starring  ?uri  }  union  {  ?x  dbp:starring  ?uri  }  } 
+ select  distinct  ?uri  where  {  dbr:philippines  dbo:officiallanguage  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:film  ;  dbo:country  dbr:denmark  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:film  ;  dbo:starring  dbr:brad_pitt  ;  dbo:director  dbr:guy_ritchie  } 
+ select  distinct  ?uri  where  {  dbr:bruce_lee  dbo:child  ?child  .  ?child  dbp:children  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:weapon  ;  dbp:designer  ?x  .  dbr:uzi  dbp:designer  ?x  filter  (  ?uri  !=  dbr:uzi  )  } 
+ select  distinct  ?uri  where  {  dbr:universal_studios  dbo:owner  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  yago:wikicatstatesoftheunitedstates  ;  dbp:densityrank  ?rank  }  order  by  asc(?rank)  limit  1 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:monarch  ;  dbo:spouse  ?spouse  {  ?spouse  dbo:birthplace  dbr:germany  }  union  {  ?spouse  dbo:birthplace  ?p  .  ?p  dbo:country  dbr:germany  }  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:organisation  {  ?uri  dbo:formationyear  ?date  }  union  {  ?uri  dbo:foundingyear  ?date  }  union  {  ?uri  dbp:foundation  ?date  }  union  {  ?uri  dbp:formation  ?date  }  filter  regex(?date,  "^1950")  } 
+ select  distinct  ?uri  where  {  dbr:captain_america  dbo:creator  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:mission  dbr:apollo_14  } 
+ select  distinct  ?uri  where  {  dbr:the_pillars_of_the_earth  dbo:author  ?uri  } 
+ select  ?uri  where  {  ?uri  dbp:densityrank  ?density  }  order  by  asc(?density)  limit  1 
+ select  distinct  ?uri  where  {  ?uri  dbp:launchpad  dbr:baikonur_cosmodrome  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:occupation  dbr:bandleader  ;  dbo:instrument  dbr:trumpet  } 
+ select  distinct  ?uri  where  {  dbr:utah  dbp:timezone  ?x  .  ?uri  rdf:type  yago:wikicatstatesoftheunitedstates  ;  dbp:timezone  ?x  filter  (  ?uri  !=  dbr:utah  )  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  yago:wikicatstatesoftheunitedstates  ;  dbp:mineral  ?mineral  filter  regex(?mineral,  "gold",  "i")  } 
+ select  distinct  ?uri  where  {  dbr:ingrid_bergman  dbo:child  ?child  .  ?child  dbp:spouse  ?uri  } 
+ select  distinct  ?n  where  {  dbr:lake_placid_(texas)  dbo:maximumdepth  ?n  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:museum  ;  dbo:location>  <http://dbpedia.org/resource/london>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:cave  ;  <http://dbpedia.org/property/entrancecount>  ?entrance  filter  (  ?entrance  >  3  )  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:team  <http://dbpedia.org/resource/atlanta_falcons>  ;  dbo:height>  ?h  }  order  by  desc(?h)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  <http://purl.org/dc/terms/subject>  <http://dbpedia.org/resource/category:action_role-playing_video_games>  ;  dbp:ign  ?score  }  order  by  desc(?score)  limit  10 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:writer  ;  dbo:award>  <http://dbpedia.org/resource/nobel_prize_in_literature>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:basketballplayer  ;  dbo:height>  ?n  filter  (  ?n  >  2.0  )  } 
+ select  distinct  ?date  where  {  <http://dbpedia.org/resource/statue_of_liberty>  dbp:beginningdate  ?date  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/illinois>  dbp:borderingstates  ?uri  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/minecraft>  dbo:developer  ?uri  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/hillel_slovak>  dbo:deathplace  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:film  ;  dbo:starring>  <http://dbpedia.org/resource/jesse_eisenberg>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:swimmer  ;  dbo:birthplace>  <http://dbpedia.org/resource/moscow>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:astronaut  {  ?uri  dbo:nationality>  <http://dbpedia.org/resource/russia>  }  union  {  ?uri  dbo:nationality>  <http://dbpedia.org/resource/soviet_union>  }  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:type  <http://dbpedia.org/resource/nonprofit_organization>  {  ?uri  dbo:location>  <http://dbpedia.org/resource/switzerland>  }  union  {  ?uri  dbo:location>  ?x  .  ?x  dbo:country>  <http://dbpedia.org/resource/switzerland>  }  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:president  ;  dbo:birthdate>  ?date  filter  regex(?date,  "^1945")  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/lou_reed>  dbo:genre  ?uri  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/boston_red_sox>  dbp:ballpark  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:soccerclub  ;  dbo:league>  <http://dbpedia.org/resource/bundesliga>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:volcano  ;  dbo:locatedinarea>  <http://dbpedia.org/resource/japan>  ;  dbo:eruptionyear>  ?date  filter  (  year(?date)  >=  2000  )  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:bridge  ;  dbo:crosses>  <http://dbpedia.org/resource/seine>  } 
+ select  distinct  ?string  where  {  <http://dbpedia.org/resource/university_of_oxford>  dbo:officialschoolcolour  ?string  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  ?uri  dbo:producer  <http://dbpedia.org/resource/hal_roach>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:film  ;  dbo:country>  <http://dbpedia.org/resource/denmark>  } 
+ select  distinct  ?x  where  {  ?uri  dbo:deathcause  ?x  .  }  order  by  desc(count(distinct  ?uri))  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:basketballplayer  ;  dbo:birthdate>  ?date  ;  <http://dbpedia.org/property/highlights>  ?h  filter  regex(?h,  "mvp")  }  order  by  desc(?date)  offset  0  limit  4 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:company  {  ?uri  dbo:location>  <http://dbpedia.org/resource/munich>  }  union  {  ?uri  dbo:headquarter>  <http://dbpedia.org/resource/munich>  }  union  {  ?uri  dbo:locationcity>  <http://dbpedia.org/resource/munich>  }  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/himalayas>  dbo:country  ?country  .  ?country  dbo:capital>  ?uri  } 
+ select  count(distinct  ?uri  as  ?uri)  where  {  ?uri  dbo:director  <http://dbpedia.org/resource/park_chan-wook>  .  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:river  .  ?x  dbo:inflow>  ?uri  ;  a  dbo:lake>  ;  dbo:country>  <http://dbpedia.org/resource/germany>  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  ?uri  a  dbo:airline  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:island  ;  dbo:country>  <http://dbpedia.org/resource/japan>  } 
+ select  distinct  ?num  where  {  <http://dbpedia.org/resource/maribor>  dbo:populationtotal  ?num  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:mission  <http://dbpedia.org/resource/apollo_14>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:company  {  ?uri  dbo:numberofemployees>  ?n  }  union  {  ?uri  <http://dbpedia.org/property/numemployees>  ?n  }  filter  (  ?n  >  1000000  )  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:film  ;  dbo:starring>  <http://dbpedia.org/resource/julia_roberts>  ;  dbo:director>  <http://dbpedia.org/resource/garry_marshall>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:soccerclub  ;  dbo:league>  <http://dbpedia.org/resource/premier_league>  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/ural_mountains>  dbp:highest  ?uri  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/wyoming>  dbp:governor  ?uri  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/eiffel_tower>  dbo:architect  ?x  .  ?x  <http://dbpedia.org/property/almamater>  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  <http://dbpedia.org/ontology/worldheritagesite>  .  {  ?uri  <http://dbpedia.org/property/year>  '2013'^^xsd:integer  .  }  union  {  ?uri  <http://dbpedia.org/property/year>  '2014'^^xsd:integer  .  }  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  <http://dbpedia.org/ontology/actor>  .  ?uri  <http://dbpedia.org/ontology/birthplace>  <http://dbpedia.org/resource/paris>  .  ?uri  <http://dbpedia.org/ontology/birthdate>  ?date  .  filter  (  ?date  >=  xsd:datetime('1950-12-31t00:00:00z'))  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:starring  <http://dbpedia.org/resource/elizabeth_taylor>  ;  dbo:starring>  <http://dbpedia.org/resource/richard_burton>  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:type  <http://dbpedia.org/resource/nonprofit_organization>  {  ?uri  dbo:locationcountry>  <http://dbpedia.org/resource/australia>  }  union  {  ?uri  dbo:location>  ?x  .  ?x  dbo:country>  <http://dbpedia.org/resource/australia>  }  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/pope_john_paul_ii>  dbp:successor  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:astronaut  ;  <http://dbpedia.org/property/type>  <http://dbpedia.org/resource/european_space_agency>  } 
+ select  distinct  ?uri  where  {  ?uri  dbp:title  <http://dbpedia.org/resource/president_of_pakistan>  ;  dbp:years>  1978  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/rolls-royce_motors>  dbo:owner  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:museum  ;  dbo:location>  <http://dbpedia.org/resource/paris>  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/john_f._kennedy>  dbo:deathplace  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:person  {  ?uri  dbo:office>  "chancellor  of  germany"  }  union  {  ?uri  <http://dbpedia.org/property/office>  <http://dbpedia.org/resource/chancellor_of_germany>  }  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:person  {  ?uri  dbo:birthdate>  ?date  }  union  {  ?uri  <http://dbpedia.org/property/birthdate>  ?date  }  <http://dbpedia.org/resource/halloween>  <http://dbpedia.org/property/date>  ?date  } 
+ select  distinct  ?uri  where  {  ?uri  <http://dbpedia.org/property/type>  <http://dbpedia.org/resource/beer>  ;  dbo:origin  <http://dbpedia.org/resource/beer_in_ireland>  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/himalayas>  dbo:country  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:actor  {  ?uri  dbo:birthplace>  <http://dbpedia.org/resource/germany>  }  union  {  ?uri  dbo:birthplace>  ?place  .  ?place  dbo:country>  <http://dbpedia.org/resource/germany>  }  } 
+ select  distinct  ?carbs  where  {  <http://dbpedia.org/resource/peanut_butter>  dbp:carbs  ?carbs  } 
+ select  distinct  ?uri  where  {  ?film  rdf:type  <http://dbpedia.org/ontology/film>  .  ?film  <http://dbpedia.org/ontology/producer>  ?uri  .  }  order  by  desc(count(?film))  offset  0  limit  1 
+ select  distinct  ?num  where  {  <http://dbpedia.org/resource/google>  dbo:numberofemployees  ?num  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:actor  ;  dbo:birthplace>  <http://dbpedia.org/resource/berlin>  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/goofy>  dbo:creator  ?uri  } 
+ select  distinct  ?uri  where  {  ?single  dbo:album  ?uri  ;  <http://www.w3.org/2000/01/rdf-schema#label>  "last  christmas"@en  } 
+ select  distinct  ?date  where  {  <http://dbpedia.org/resource/alberta>  dbp:admittancedate  ?date  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  ?uri  dbp:programme  <http://dbpedia.org/resource/soyuz_programme>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:televisionshow  ;  dbo:starring>  <http://dbpedia.org/resource/neil_patrick_harris>  } 
+ select  distinct  ?date  where  {  <http://dbpedia.org/resource/hells_angels>  dbp:founded  ?date  } 
+ select  distinct  ?ni  where  {  <http://dbpedia.org/resource/apple_inc.>  dbo:netincome  ?ni  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:holiday  ;  dbo:country>  <http://dbpedia.org/resource/sweden>  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/juliana_of_the_netherlands>  <http://dbpedia.org/property/burialplace>  ?uri  .  ?uri  a  dbo:settlement  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:musical  ;  dbo:musicby>  <http://dbpedia.org/resource/leonard_bernstein>  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  ?uri  a  dbo:company  {  ?uri  dbo:industry>  <http://dbpedia.org/resource/advertising>  }  union  {  ?uri  dbo:industry>  ?industry  filter  regex(?industry,  "advertising",  "i")  }  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/washington_(state)>  dbp:largestmetro  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:person  ;  <http://dbpedia.org/property/conviction>  <http://dbpedia.org/resource/death_of_john_lennon>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:writer  {  ?uri  dbo:almamater>  ?x  }  union  {  ?uri  dbo:education>  ?x  }  {  ?x  dbo:city>  <http://dbpedia.org/resource/istanbul>  }  union  {  ?x  <http://dbpedia.org/property/city>  <http://dbpedia.org/resource/istanbul>  }  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:band  ;  dbo:genre>  <http://dbpedia.org/resource/metalcore>  {  ?uri  dbo:hometown>  <http://dbpedia.org/resource/australia>  }  union  {  ?uri  dbo:hometown>  ?h  .  ?h  dbo:country>  <http://dbpedia.org/resource/australia>  }  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:country  {  ?uri  dbo:currency>  <http://dbpedia.org/resource/euro>  }  union  {  ?uri  <http://dbpedia.org/property/currencycode>  "eur"@en  }  } 
+ select  distinct  ?uri  where  {  ?uri  a  yago:wikicateatingdisorders  } 
+ ask  where  {  <http://dbpedia.org/resource/marc_chagall>  dbp:ethnicity  "jewish"@en  } 
+ select  distinct  ?n  where  {  <http://dbpedia.org/resource/brazil_national_football_team>  dbp:fifamin  ?n  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  ?uri  a  dbo:film  ;  dbo:starring>  <http://dbpedia.org/resource/leonardo_dicaprio>  } 
+ ask  where  {  <http://dbpedia.org/resource/margaret_thatcher>  dbo:profession  <http://dbpedia.org/resource/chemist>  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/utah>  dbp:timezone  ?x  .  ?uri  a  <http://dbpedia.org/class/yago/wikicatstatesoftheunitedstates>  ;  dbp:timezone>  ?x  filter  (  ?uri  !=  <http://dbpedia.org/resource/utah>  )  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:book  ;  dbo:author>  <http://dbpedia.org/resource/danielle_steel>  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  <http://dbpedia.org/ontology/country>  .  ?uri  <http://dbpedia.org/property/officiallanguages>  ?language  .  }  order  by  desc(count(?language))  offset  0  limit  1 
+ select  distinct  ?num  where  {  <http://dbpedia.org/resource/new_york_city_fire_department>  dbp:employees  ?num  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/chewbacca>  dbo:portrayer  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:library  ;  <http://dbpedia.org/property/established>  ?year  filter  (  ?year  <  1400  )  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:programminglanguage  {  ?uri  dbo:influencedby>  <http://dbpedia.org/resource/perl>  }  union  {  <http://dbpedia.org/resource/perl>  dbo:influenced>  ?uri  }  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/mount_mckinley>  dbo:wikipageredirects  ?x  .  ?x  dbo:locatedinarea  ?uri.  ?uri  rdf:type  yago:wikicatstatesoftheunitedstates  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:airline  {  ?uri  dbo:alliance>  <http://dbpedia.org/resource/skyteam>  }  union  {  ?uri  dbo:alliance>  <http://dbpedia.org/resource/skyteam>  }  } 
+ select  distinct  ?uri  where  {  ?uri  dbp:shipnamesake  <http://dbpedia.org/resource/benjamin_franklin>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:politician  ;  dbo:religion>  <http://dbpedia.org/resource/methodism>  } 
+ select  ?books  where  {  ?books  dbo:author  dbr:john_green_(author)  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:mountain  ;  dbo:elevation>  ?elevation  }  order  by  desc(?elevation)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  <http://dbpedia.org/ontology/occupation>  <http://dbpedia.org/resource/poet>  .  ?x  <http://dbpedia.org/ontology/author>  ?uri  .  ?x  rdf:type  <http://dbpedia.org/ontology/book>  .  }  order  by  desc(count(?x))  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:programminglanguage  ;  dbo:influenced>  <http://dbpedia.org/resource/javascript>  } 
+ select  distinct  ?uri  where  {  ?uri  <http://dbpedia.org/ontology/occupation>  <http://dbpedia.org/resource/musician>  .  ?x  <http://dbpedia.org/ontology/author>  ?uri  .  ?x  rdf:type  <http://dbpedia.org/ontology/book>  .  }  order  by  desc(count(?x))  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  dbo:director  <http://dbpedia.org/resource/clint_eastwood>  ;  dbo:starring>  <http://dbpedia.org/resource/clint_eastwood>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:software  .  ?company  a  dbo:company>  .  ?uri  dbo:developer>  ?company  .  ?company  dbo:foundationplace>  <http://dbpedia.org/resource/california>  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/cat_stevens>  dbo:instrument  ?uri  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  ?uri  a  dbo:airline  ;  dbo:alliance>  <http://dbpedia.org/resource/star_alliance>  } 
+ select  distinct  ?uri  where  {  ?uri  foaf:surname  'baldwin'@en  .  {  ?uri  <http://dbpedia.org/ontology/occupation>  <http://dbpedia.org/resource/actor>  .  }  union  {  ?uri  rdf:type  <http://dbpedia.org/ontology/actor>  .  }  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/the_hunger_games>  dbp:author  ?uri  } 
+ select  distinct  ?uri  where  {  ?x  rdf:type  dbo:album  ;  dbo:artist  dbr:elvis_presley  ;  dbo:releasedate  ?y  ;  dbo:recordlabel  ?uri  }  order  by  asc(?y)  offset  0  limit  1 
+ ask  where  {  dbr:batman_begins  dbo:starring  dbr:christian_bale  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/prime_minister_of_spain>  dbp:residence  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  <http://dbpedia.org/ontology/actor>  .  ?f  rdf:type>  <http://dbpedia.org/ontology/film>  .  ?f  <http://dbpedia.org/ontology/starring>  ?uri  .  }  order  by  desc(count(distinct(?f)))  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:country  ;  dbo:officiallanguage>  ?language  }  group  by  ?uri  having  (  count(?language)  >  2  ) 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:country  .  ?cave  a  dbo:cave>  {  ?cave  dbo:location>  ?uri  }  union  {  ?cave  dbo:location>  ?loc  .  ?loc  dbo:country>  ?uri  }  }  group  by  ?uri  having  (  count(?cave)  >  10  ) 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  <http://dbpedia.org/ontology/song>  .  ?uri  <http://dbpedia.org/ontology/artist>  <http://dbpedia.org/resource/bruce_springsteen>  .  ?uri  <http://dbpedia.org/ontology/releasedate>  ?date  .  filter  (?date  >=  '1980-01-01'^^xsd:date  &&  ?date  <=  '1990-12-31'^^xsd:date)  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:televisionshow  ;  dbo:creator>  <http://dbpedia.org/resource/john_cleese>  } 
+ select  distinct  ?date  where  {  <http://dbpedia.org/resource/latvia>  dbp:accessioneudate  ?date  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:soccerplayer  ;  dbo:birthplace>  <http://dbpedia.org/resource/malta>  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  ?uri  dbo:profession  <http://dbpedia.org/resource/politician>  ;  dbo:almamater>  <http://dbpedia.org/resource/columbia_university>  } 
+ select  distinct  ?date  where  {  <http://dbpedia.org/resource/charmed>  dbo:starring  ?actor  .  ?actor  dbo:birthdate>  ?date  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  ?uri  a  dbo:organisation  {  ?uri  dbo:industry>  <http://dbpedia.org/resource/telecommunication>  }  union  {  ?uri  <http://dbpedia.org/property/industry>  ?industry  filter  regex(?industry,  "telecommunications")  }  {  ?uri  dbo:location>  <http://dbpedia.org/resource/belgium>  }  union  {  ?uri  <http://dbpedia.org/property/locationcountry>  "belgium"@en  }  } 
+ select  distinct  ?uri  where  {  {  ?uri  a  dbo:lake  ;  dbo:country>  <http://dbpedia.org/resource/denmark>  }  union  {  ?uri  a  <http://dbpedia.org/class/yago/lakesofdenmark>  }  } 
+ select  distinct  ?n  where  {  <http://dbpedia.org/resource/eddie_murphy>  dbp:children  ?n  } 
+ select  ?uri  where  {  ?uri  a  dbo:building  ;  dbo:architecturalstyle>  <http://dbpedia.org/resource/english_gothic_architecture>  ;  dbo:location>  <http://dbpedia.org/resource/kent>  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/real_madrid_c.f.>  dbo:manager  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:currency  <http://dbpedia.org/resource/west_african_cfa_franc>  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:holiday  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:river  {  ?uri  dbo:length>  ?l  }  union  {  ?uri  <http://dbpedia.org/property/length>  ?l  }  }  order  by  desc(?l)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:organisation  {  ?uri  dbo:formationyear>  ?date  }  union  {  ?uri  dbo:foundingyear>  ?date  }  filter  regex(?date,  "^1930")  } 
+ select  distinct  ?string  where  {  <http://dbpedia.org/resource/angela_merkel>  dbp:birthname  ?string  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:spouse  <http://dbpedia.org/resource/tom_cruise>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:weapon  ;  <http://dbpedia.org/property/designer>  <http://dbpedia.org/resource/heckler_&_koch>  } 
+ select  ?city  where  {  ?m  skos:broader  dbc:cities_in_germany  .  ?city  dct:subject  ?m  ;  dbo:areatotal  ?area  }  order  by  ?area  limit  1 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/lisbon>  dbp:leaderparty  ?uri  } 
+ select  distinct  ?n  where  {  ?uri  <http://dbpedia.org/property/satelliteof>  <http://dbpedia.org/resource/jupiter>  ;  dbo:mass  ?n  }  order  by  asc(?n)  offset  0  limit  1 
+ select  distinct  ?number  where  {  <http://dbpedia.org/resource/ibm>  dbo:numberofemployees  ?number  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:series  dbr:the_sopranos  ;  dbo:seasonnumber  1  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:abbreviation  "icro"  } 
+ ask  where  {  dbr:battlestar_galactica_%281978_tv_series%29  dbo:numberofepisodes  ?x  .  dbr:battlestar_galactica_%282004_tv_series%29>  dbo:numberofepisodes  ?y  filter  (  ?y  >  ?x  )  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:film  ;  dbo:producer>  <http://dbpedia.org/resource/hal_roach>  } 
+ select  distinct  ?uri  where  {  dbr:agent_smith  dbo:portrayer  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:politicalparty  ;  dbo:country>  <http://dbpedia.org/resource/greece>  ;  dbo:ideology>  <http://dbpedia.org/resource/pro-europeanism>  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:occupation  <http://dbpedia.org/resource/bandleader>  ;  dbo:instrument>  <http://dbpedia.org/resource/trumpet>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:mountain  ;  dbo:elevation>  ?elevation  }  order  by  desc(?elevation)  offset  1  limit  1 
+ ask  where  {  <http://dbpedia.org/resource/egypt>  dbo:largestcity  ?large  ;  dbo:capital>  ?capital  filter  (  ?large  =  ?capital  )  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:rocket  ;  dbo:launchsite>  <http://dbpedia.org/resource/baikonur_cosmodrome>  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  ?uri  a  dbo:programminglanguage  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:chessplayer  ;  dbo:birthplace>  ?x  ;  dbo:deathplace>  ?y  filter  (  ?x  =  ?y  )  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/facebook>  dbo:foundedby  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:film  ;  dbo:starring>  <http://dbpedia.org/resource/tom_cruise>  } 
+ select  distinct  ?uri  where  {  dbr:fort_knox  dbo:location  ?uri  .  ?uri  dbo:country  dbr:united_states  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:city  ;  dbo:ispartof  dbr:new_jersey  ;  dbo:populationtotal  ?inhabitants  filter  (  ?inhabitants  >  100000  )  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/nanga_parbat>  dbo:elevation  ?elevation  .  ?uri  a  dbo:mountain>  {  ?uri  dbo:elevation>  ?otherelevation  }  union  {  ?uri  <http://dbpedia.org/property/elevationm>  ?otherelevation  }  filter  (  ?otherelevation  >  ?elevation  )  } 
+ select  distinct  ?string  where  {  ?x  dbo:musicalartist  <http://dbpedia.org/resource/ramones>  ;  dbo:bside>  ?string  } 
+ select  distinct  ?uri  where  {  <http://dbpedia.org/resource/unc_health_care>  dbp:speciality  ?uri  } 
+ select  distinct  ?date  where  {  <http://dbpedia.org/resource/olof_palme>  dbo:deathdate  ?date  } 
+ select  distinct  ?uri  where  {  ?uri  dbp:title  <http://dbpedia.org/resource/king_of_rome>  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:birthplace  <http://dbpedia.org/resource/vienna>  ;  dbo:deathplace>  <http://dbpedia.org/resource/berlin>  } 
+ ask  where  {  <http://dbpedia.org/resource/darth_vader>  dbo:child  <http://dbpedia.org/resource/luke_skywalker>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:brewery  {  ?uri  dbo:location>  <http://dbpedia.org/resource/australia>  }  union  {  ?uri  dbo:location>  ?x  .  ?x  dbo:country>  <http://dbpedia.org/resource/australia>  }  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  <http://dbpedia.org/ontology/film>  .  ?uri  <http://dbpedia.org/ontology/director>  <http://dbpedia.org/resource/steven_spielberg>  .  ?uri  <http://dbpedia.org/ontology/budget>  ?b  .  filter(  xsd:double(?b)  >=  8.0e7  )  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:soccerclub  {  ?uri  dbo:ground>  <http://dbpedia.org/resource/spain>  }  union  {  ?uri  <http://dbpedia.org/property/ground>  ?ground  filter  regex(?ground,  "spain")  }  } 
+ select  distinct  ?uri  where  {  ?film  a  dbo:film  ;  dbo:starring>  <http://dbpedia.org/resource/natalie_portman>  ;  dbo:producer>  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  dbp:breed  <http://dbpedia.org/resource/german_shepherd>  } 
+ select  distinct  ?uri  where  {  ?uri  a  dbo:person  ;  dbo:weight>  ?num  {  ?uri  <http://dbpedia.org/property/team>  <http://dbpedia.org/resource/chicago_bulls>  }  union  {  ?uri  <http://dbpedia.org/property/draftteam>  <http://dbpedia.org/resource/chicago_bulls>  }  union  {  ?uri  dbo:draftteam>  <http://dbpedia.org/resource/chicago_bulls>  }  }  order  by  desc(?num)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  dbo:spokenin  <http://dbpedia.org/resource/estonia>  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:country  ;  dbo:areatotal  ?n  }  order  by  desc(?n)  offset  0  limit  1 
+ select  ?lcity  where  {  dbr:united_states  dbo:largestcity  ?lcity  } 
+ select  ?uri  where  {  ?uri  rdf:type  dbo:pope  .  dbr:vatican_television_center  dbo:foundedby  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:ceres_(dwarf_planet)  dbo:discoverer  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:netherlands  dbo:leader  ?uri  .  ?uri  rdf:type  dbo:royalty  } 
+ ask  where  {  dbr:cola  rdf:type  dbo:beverage  } 
+ select  ?almamater  where  {  dbr:angela_merkel  dbo:almamater  ?almamater  } 
+ select  distinct  ?uri  where  {  dbr:the_pillars_of_the_earth  dbo:author  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:yeti_airlines  dbo:targetairport  ?uri  } 
+ select  ?goethe  where  {  dbr:johann_wolfgang_von_goethe  dbo:birthplace  ?goethe  } 
+ ask  where  {  dbr:cuban_missile_crisis  dbo:date  ?x  .  dbr:bay_of_pigs_invasion  dbo:date  ?y  filter  (  ?x  <  ?y  )  } 
+ select  distinct  ?uri  where  {  dbr:carrot_cake  dbo:ingredient  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:wikipedia  dbo:author  ?uri  } 
+ select  ?m  where  {  ?m  dbo:mountainrange  dbr:ore_mountains  ;  dbo:elevation  ?height  }  order  by  desc(?height)  limit  1 
+ select  ?leader  where  {  dbr:federal_ministry_of_finance_(germany)  dbo:leader  ?leader  } 
+ select  distinct  ?uri  where  {  dbr:mecca  dbo:country  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:gus_fring  dbo:portrayer  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:nile  dbo:sourcecountry  ?uri  } 
+ select  ?s  where  {  dbr:pennsylvania_state_university  dbo:state  ?s  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:stadium  ;  dbo:location  dbr:spain  ;  dbo:seatingcapacity  ?n  }  order  by  desc(?n)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?x  dbo:city  dbr:ankara  ;  dbo:league  dbr:turkish_ice_hockey_first_league  ;  dbo:coach  ?uri  } 
+ select  ?area  where  {  dbr:united_kingdom  dbo:areatotal  ?area  } 
+ select  distinct  ?uri  where  {  dbr:batman  dbo:creator  ?uri  } 
+ ask  where  {  dbr:sigmund_freud  dbo:spouse  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:dbpedia  dbo:developer  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:film  ;  dbo:director  dbr:francis_ford_coppola  } 
+ ask  where  {  dbr:hylidae  dbo:class  dbr:amphibian  } 
+ select  ?uri  where  {  dbr:palace_of_westminster  dbo:location  ?uri  } 
+ select  ?ele  where  {  dbr:düsseldorf_airport  dbo:elevation  ?ele  }  limit  1 
+ select  ?mexico_city  where  {  dbr:mexico_city  dbo:populationtotal  ?mexico_city  } 
+ select  ?ff  where  {  dbr:french_fifth_republic  dbo:foundingdate  ?ff  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:royalty  ;  rdf:type  yago:wikicatenglishmonarchs  ;  dbo:activeyearsstartyear  ?date  }  order  by  asc(?date)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  dbr:forbes  dbo:editor  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:douglas_hofstadter  dbo:award  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:dartsplayer  ;  dbo:birthdate  ?date  }  order  by  desc(?date)  offset  0  limit  1 
+ ask  where  {  dbr:horse_racing  rdf:type  dbo:sport  } 
+ select  distinct  ?uri  where  {  dbr:brooklyn_bridge  dbo:crosses  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:poland  dbo:populationtotal  ?uri  } 
+ select  ?date  where  {  dbr:friends  dbo:completiondate  ?date  } 
+ ask  where  {  dbr:barack_obama  dbo:spouse  ?spouse  .  ?spouse  rdfs:label  ?name  filter  regex(?name,  "michelle")  } 
+ select  ?name  where  {  dbr:8th_president_of_the_united_states  dbo:wikipageredirects  ?link  .  ?link  dbp:name  ?name  } 
+ select  ?europop  where  {  dbr:european_union  dbo:populationtotal  ?europop  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:launchpad  ;  dbo:operator  dbr:nasa  } 
+ select  distinct  ?uri  where  {  dbr:world_of_warcraft  dbo:developer  ?uri  } 
+ select  ?bn  where  {  dbr:adele  dbo:birthname  ?bn  } 
+ select  ?pop  where  {  dbr:cairo  dbo:populationtotal  ?pop  } 
+ ask  where  {  optional  {  dbr:frank_herbert  dbo:deathdate  ?date  }  filter  (  !  bound(?date)  )  } 
+ select  ?book  where  {  {  ?book  dbo:author  dbr:dan_brown  .  ?book  dbp:releasedate  ?date  }  union  {  ?book  dbo:author  dbr:dan_brown  .  ?book  dbo:publicationdate  ?date}  }  order  by  desc(xsd:date(?date))  limit  1 
+ select  distinct  ?country  where  {  dbr:sungkyunkwan_university  dbo:city  ?city  ;  dbo:country  ?country  } 
+ select  ?author  where  {  dbr:the_interpretation_of_dreams  dbo:author  ?author  } 
+ select  ?x  where  {  dbr:william_shakespeare  dbo:deathdate  ?x  }  limit  1 
+ select  distinct  ?uri  where  {  ?uri  dbo:product  dbr:slack_(software)  } 
+ select  ?uri  where  {  dbr:carolina_reaper  dbo:origin  ?uri} 
+ select  distinct  ?uri  where  {  dbr:rachel_stevens  dbo:birthyear  ?uri  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  dbr:jane_fonda  dbo:spouse  ?uri  } 
+ ask  where  {  dbr:abraham_lincoln  dbo:spouse  ?spouse  .  ?spouse  rdfs:label  ?name  filter  regex(?name,  "mary")  } 
+ select  distinct  ?uri  where  {  dbr:weser  dbo:city  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:gimp  dbo:programminglanguage  ?uri  } 
+ select  distinct  ?university  where  {  dbr:angela_merkel  dbo:almamater  ?university  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:musical  ;  dbo:musicby  dbr:elton_john  } 
+ select  distinct  ?number  where  {  dbr:aldi  dbo:numberoflocations  ?number  } 
+ select  ?uri  where  {  ?uri  rdf:type  dbo:bodyofwater  ;  dbo:length  ?length  }  order  by  desc(?length)  limit  1 
+ select  distinct  ?date  where  {  dbr:john_adams  dbo:birthdate  ?date  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:company  ;  dbo:product  dbr:hovercraft  } 
+ select  distinct  ?uri  where  {  dbr:abraham_lincoln  dbo:spouse  ?uri  } 
+ select  ?species  where  {  dbr:elephant  dbp:species  ?species  } 
+ select  distinct  ?num  where  {  dbr:australia  dbo:capital  ?x  .  ?x  dbo:populationtotal  ?num  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:currency  dbr:cocoa_bean  } 
+ select  (count(?uri)  as  ?count)  where  {  dbr:albert_einstein  dbo:knownfor  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:titanic_(1997_film)  dbo:musiccomposer  ?uri  } 
+ select  distinct  ?runtime  where  {  dbr:toy_story  dbo:runtime  ?runtime  } 
+ select  ?border  where  {  dbr:geography_of_iran  dbp:borders  ?border  }  limit  8 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:company  ;  dbo:industry  dbr:electronics  ;  dbo:foundationplace  dbr:beijing  } 
+ select  distinct  ?uri  where  {  dbr:john_f._kennedy  dbo:successor  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:paris  dbo:mayor  ?uri  } 
+ ask  where  {  dbr:arnold_schwarzenegger  dbo:almamater  ?x  .  ?x  rdf:type  dbo:university  } 
+ ask  where  {  dbr:james_bond  dbo:spouse  ?uri  } 
+ ask  where  {  ?x  dbo:inflow  dbr:isar  ;  rdf:type  dbo:lake  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:company  ;  dbo:location  dbr:india  ;  dbo:numberofemployees  ?n  }  order  by  desc(?n)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  dbr:john_f._kennedy  dbo:vicepresident  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:miffy  dbo:creator  ?x  .  ?x  dbo:nationality  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:heineken  dbo:manufacturer  ?x  .  ?x  dbo:locationcity  ?uri  } 
+ ask  where  {  dbr:barack_obama  dbo:party  dbr:democratic_party_(united_states)  } 
+ select  distinct  ?uri  where  {  dbr:margaret_thatcher  dbo:child  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:melon_de_bourgogne  dbo:wineregion  ?uri  } 
+ select  ?tarea  where  {  dbr:north_rhine-westphalia  dbo:areatotal  ?tarea  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:city  ;  dbo:populationtotal  ?pop  }  order  by  desc(?pop)  offset  0  limit  1 
+ select  ?owner  where  {  ?owner  dbo:owner  dbr:donald_trump  } 
+ select  ?date  where  {  dbr:2018_fifa_world_cup  dbp:date  ?date  }  order  by  desc(?date)  limit  1 
+ select  distinct  ?uri  where  {  ?uri  dbo:director  dbr:stanley_kubrick  } 
+ select  ?piraq  where  {  dbr:iraq  dbo:populationtotal  ?piraq  } 
+ select  distinct  ?num  where  {  dbr:canada  dbo:largestcity  ?city  .  ?city  dbo:populationtotal  ?num  } 
+ select  distinct  ?uri  where  {  dbr:french_polynesia  dbo:capital  ?x  .  ?x  dbo:mayor  ?uri  } 
+ select  distinct  ?uri  where  {  ?x  dbo:director  dbr:william_shatner  ;  dbo:starring  ?uri  } 
+ select  distinct  ?height  where  {  dbr:claudia_schiffer  dbo:height  ?height  } 
+ select  ?rank  where  {  dbr:germany  dbp:populationdensityrank  ?rank  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:mountain  ;  dbo:locatedinarea  dbr:italy  ;  dbo:elevation  ?num  }  order  by  desc(?num)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  dbo:publisher  dbr:gmt_games  } 
+ select  distinct  ?uri  where  {  dbr:suriname  dbo:officiallanguage  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:nikos_kazantzakis  dbo:deathplace  ?uri  .  ?uri  rdf:type  dbo:town  } 
+ select  distinct  ?uri  where  {  dbr:chocolate_chip_cookie  dbo:ingredient  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:limerick_lake  dbo:country  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:videogame  ;  dbo:publisher  dbr:mean_hamster_software  } 
+ select  distinct  ?uri  where  {  dbr:the_prodigy  dbo:bandmember  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:rome  dbo:timezone  ?uri  } 
+ select  distinct  ?num  where  {  dbr:colombo_lighthouse  dbo:height  ?num  } 
+ select  ?writers  where  {  dbr:the_wall  dbp:writer  ?writers  } 
+ select  distinct  ?uri  where  {  dbr:rotterdam  dbo:leadername  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:australia  dbo:largestcity  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:jacques_chirac  dbo:spouse  ?uri  } 
+ select  ?uri  where  {  dbr:south_africa  dbo:governmenttype  ?uri  } 
+ select  distinct  ?num  where  {  dbr:yokohama_marine_tower  dbo:height  ?num  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:holiday  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:basketballplayer  ;  dbo:height  ?num  }  order  by  desc(?num)  offset  0  limit  1 
+ select  (count(distinct  ?x)  as  ?c)  where  {  dbr:turkmenistan  dbo:language  ?x  } 
+ ask  where  {  dbr:che_guevara  dbo:child  ?uri  } 
+ ask  where  {  dbr:aki_kaurismäki  dbo:award  dbr:grand_prix_(cannes_film_festival)  } 
+ select  distinct  ?uri  where  {  dbr:paris  dbo:mayor  ?x  .  ?x  dbo:party  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:formulaoneracer  ;  dbo:races  ?x  }  order  by  desc(?x)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  dbr:sitecore  dbo:foundationplace  ?uri  } 
+ select  distinct  ?place  where  {  dbr:frank_sinatra  dbo:birthplace  ?place  } 
+ ask  where  {  dbr:velvet_goldmine  dbo:starring  dbr:christian_bale  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:parent  dbr:cher  ;  dbo:parent  dbr:sonny_bono  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  dbr:slovenia  dbo:ethnicgroup  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:cameroon  dbo:capital  ?uri  } 
+ ask  where  {  dbr:natalie_portman  dbo:birthplace  ?city  .  ?city  dbo:country  dbr:united_states  } 
+ select  distinct  ?n  where  {  dbr:war_and_peace  dbo:numberofpages  ?n  } 
+ select  distinct  ?uri  where  {  dbr:meryl_streep  dbo:child  ?uri  .  ?uri  dbo:birthdate  ?d  }  order  by  asc(?d)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:televisionshow  ;  dbo:creator  dbr:walt_disney  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:abbreviation  "iycm"  } 
+ select  distinct  ?uri  where  {  dbr:oregon_wine  dbo:growinggrape  ?uri  } 
+ ask  where  {  dbr:andrew_jackson  dbo:battle  ?battle  } 
+ select  distinct  ?date  where  {  dbr:rms_titanic  dbo:completiondate  ?date  } 
+ ask  where  {  dbr:nikola_tesla  dbo:award  dbr:nobel_prize_in_physics  } 
+ select  (count(?uri)  as  ?count)  where  {  ?uri  dbo:type  dbr:states_of_mexico  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:knownfor  dbr:manhattan_project  ;  rdf:type  dbo:scientist  ;  dbo:knownfor  dbr:nobel_peace_prize  } 
+ select  distinct  ?n  where  {  dbr:the_lego_movie  dbo:budget  ?n  } 
+ select  distinct  ?uri  where  {  dbr:harold_and_maude  dbo:musiccomposer  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:series  dbr:the_sopranos  ;  dbo:seasonnumber  1  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:city  ;  dbo:populationtotal  ?pop  }  order  by  asc(?pop)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  dbr:syngman_rhee  dbo:restingplace  ?uri  } 
+ ask  where  {  dbr:neymar  dbo:team  dbr:real_madrid_c.f.  } 
+ select  distinct  ?uri  where  {  dbr:the_pillars_of_the_earth  dbo:author  ?uri  } 
+ ask  where  {  dbr:prince_william,_duke_of_cambridge  dbo:parent  ?x  .  dbr:prince_harry  dbo:parent  ?x  } 
+ select  distinct  ?uri  where  {  dbr:albert_einstein  dbo:doctoraladvisor  ?uri  } 
+ ask  where  {  dbr:breaking_bad  dbo:numberofepisodes  ?x  .  dbr:game_of_thrones  dbo:numberofepisodes  ?y  filter  (  ?y  >  ?x  )  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:influenced  dbr:vincent_van_gogh  } 
+ select  distinct  ?uri  where  {  dbr:burj_khalifa  dbo:floorcount  ?burj  .  ?uri  rdf:type  dbo:building  ;  dbo:floorcount  ?proj  filter  (  ?proj  <  ?burj  )  }  order  by  desc(?proj)  limit  1 
+ select  distinct  ?result  where  {  ?uri  dbo:ispartofmilitaryconflict  dbr:wars_of_the_roses  ;  dbo:result  ?result  ;  dbo:date  ?date  }  order  by  desc(?date)  offset  0  limit  1 
+ select  distinct  ?n  where  {  dbr:pulp_fiction  dbo:budget  ?n  } 
+ ask  where  {  dbr:proinsulin  rdf:type  dbo:protein  } 
+ ask  where  {  dbr:urdu  dbo:languagefamily  ?uri  .  dbr:persian_language  dbo:languagefamily  ?uri  } 
+ select  distinct  ?uri  where  {  ?film  rdf:type  dbo:film  ;  dbo:country  dbr:spain  ;  dbo:producer  dbr:benicio_del_toro  ;  dbo:starring  ?uri  .  ?uri  rdf:type  dbo:person  } 
+ ask  where  {  dbr:lake_baikal  dbo:areatotal  ?a1  .  dbr:great_bear_lake  dbo:areatotal  ?a2  filter  (  ?a1  >  ?a2  )  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:series  dbr:foundation_series  } 
+ select  distinct  ?uri  where  {  dbr:johann_sebastian_bach  dbo:birthplace  ?uri  } 
+ select  ?loc  where  {  ?uri  dbo:type  dbr:rapid_transit  ;  dbo:openingyear  ?date  ;  dbo:location  ?loc  .  ?loc  rdf:type  dbo:city  }  order  by  asc(?date)  limit  1 
+ select  distinct  ?uri  where  {  dbr:brooklyn_bridge  dbo:architect  ?uri  } 
+ select  distinct  ?population  where  {  dbr:eurasia  dbo:populationtotal  ?population  } 
+ select  distinct  ?uri  where  {  dbr:bbc_wildlife_specials  dbo:presenter  ?uri  } 
+ select  ?uri  where  {  dbr:melbourne,_florida  dbo:populationtotal  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:mount_everest  dbo:locatedinarea  ?uri  .  ?uri  rdf:type  dbo:country  } 
+ select  distinct  ?uri  where  {  dbr:the_three_dancers  dbo:author  ?person  .  ?person  dbo:movement  ?uri  } 
+ select  distinct  ?d  where  {  dbr:operation_overlord  dbo:date  ?d  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:bridge  ;  dbo:mainspan  ?s  }  order  by  desc(?s)  offset  0  limit  1 
+ ask  where  {  ?uri  rdf:type  dbo:videogame  ;  rdfs:label  "battle  chess"@en  } 
+ select  ?uri  where  {  ?uri  dbo:restingplace  dbr:great_pyramid_of_giza  } 
+ ask  where  {  ?uri  dbo:assembly  dbr:malaysia  ;  dbo:manufacturer  dbr:ford_motor_company  } 
+ ask  where  {  dbr:aristotle  dbo:influencedby  dbr:socrates  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  dbr:benjamin_franklin  dbo:child  ?uri  } 
+ select  distinct  ?num  where  {  dbr:michael_jordan  dbo:height  ?num  } 
+ select  distinct  ?uri  where  {  dbr:secret_intelligence_service  dbo:headquarter  ?uri  .  ?uri  dbo:country  dbr:united_kingdom  } 
+ select  distinct  ?uri  where  {  dbr:family_guy  dbo:creator  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:chile_route_68  dbo:routeend  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:elvis_presley  dbo:child  ?child  .  ?child  dbo:child  ?uri  } 
+ select  distinct  ?date  where  {  dbr:ming_dynasty  dbo:dissolutiondate  ?date  } 
+ select  distinct  ?uri  where  {  dbr:t._e._lawrence  dbo:battle  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:san_pedro_de_atacama  dbo:timezone  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:book  ;  dbo:author  dbr:william_goldman  ;  dbo:numberofpages  ?x  filter  (  ?x  >  300  )  } 
+ select  distinct  ?uri  where  {  dbr:bruce_carver  dbo:deathcause  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:lufthansa  dbo:subsidiary  ?uri  .  ?uri  dbo:targetairport  dbr:dortmund_airport  ;  dbo:targetairport  dbr:berlin_tegel_airport  } 
+ ask  where  {  dbr:abraham_lincoln  dbo:deathplace  ?p  .  ?p  dbo:website  ?w  } 
+ ask  where  {  dbr:elvis_presley  dbo:child  ?uri  } 
+ ask  where  {  dbr:barack_obama  dbo:spouse  dbr:michelle_obama  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:city  .  dbr:sylvester_stallone  dbo:residence  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:book  ;  dbo:publisher  dbr:viking_press  ;  dbo:author  dbr:jack_kerouac  } 
+ select  distinct  ?uri  where  {  dbr:hotel_california  dbo:writer  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:canada  dbo:capital  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:tel_aviv  dbo:leadername  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:russia  dbo:governmenttype  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:book  ;  dbo:author  dbr:muhammad_ali  } 
+ select  distinct  ?uri  where  {  dbr:mount_everest  dbo:firstascentperson  ?uri  } 
+ select  (count(distinct  ?uri)  as  ?c)  where  {  ?uri  rdf:type  dbo:language  .  dbr:colombia  dbo:language  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:czech_republic  dbo:currency  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:wineproduced  dbr:sparkling_wine  ;  dbo:location  dbr:france  } 
+ select  distinct  ?d  where  {  dbr:boris_becker  dbo:activeyearsenddate  ?d  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:film  ;  dbo:starring  dbr:mickey_rourke  ;  dbo:director  dbr:guy_ritchie  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:film  ;  dbo:starring  dbr:julia_roberts  ;  dbo:starring  dbr:richard_gere  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:author  dbr:ernest_hemingway  ;  dbo:literarygenre  dbr:autobiography  } 
+ select  distinct  ?height  where  {  dbr:amazon_eve  dbo:height  ?height  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:governmenttype  dbr:borough_(new_york_city)  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:recordlabel  ;  dbo:genre  dbr:grunge  ;  dbo:country  dbr:canada  } 
+ select  distinct  ?uri  where  {  dbr:ganges  dbo:sourcecountry  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:penguin_books  dbo:founder  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:game_of_thrones  dbo:composer  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:eritrea  dbo:leader  ?uri  ;  dbo:leadertitle  "president"@en  } 
+ select  distinct  ?uri  where  {  dbr:john_f._kennedy  dbo:deathplace  ?uri  .  ?uri  rdf:type  dbo:city  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:mountain  ;  dbo:locatedinarea  dbr:australia  ;  dbo:elevation  ?elevation  }  order  by  desc(?elevation)  limit  1 
+ select  ?uri  where  {  dbr:farmers'_almanac  dbp:editor  ?uri  } 
+ select  distinct  ?uri  where  {  dbr:china  dbo:currency  ?uri  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:field  dbr:oceanography  ;  dbo:birthplace  dbr:sweden  } 
+ select  distinct  ?uri  where  {  dbr:headquarters_of_the_united_nations  dbo:location  ?uri  .  ?uri  rdf:type  dbo:city  } 
+ ask  where  {  dbr:tom_hanks  dbo:spouse  dbr:rita_wilson  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:country  ;  dbo:language  dbr:japanese_language  } 
+ select  distinct  ?uri  where  {  ?uri  dbo:director  dbr:tim_burton  ;  dbo:budget  ?b  }  order  by  ?b  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:museum  ;  dbo:location  dbr:new_york_city  ;  dbo:numberofvisitors  ?num  }  order  by  desc(?num)  offset  0  limit  1 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:album  ;  dbo:artist  dbr:queen_(band)  ;  dbo:releasedate  ?d  }  order  by  asc(?d)  offset  0  limit  1 
+ select  distinct  ?name  where  {  dbr:queens_of_the_stone_age  dbo:alias  ?name  } 
+ select  distinct  ?uri  where  {  ?uri  rdf:type  dbo:film  ;  dbo:starring  dbr:alec_guinness  ;  dbo:releasedate  ?date  }  order  by  desc(?date)  limit  1 
+ select  distinct  ?uri  where  {  dbr:last_action_hero  dbo:starring  ?uri  } 
+ select  ?uri  where  {  dbr:pluto  dbo:discoverer  ?uri  } 
