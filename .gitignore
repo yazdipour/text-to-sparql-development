@@ -2,3 +2,4 @@
 try/
 runs/
 *.pyc
+data/models

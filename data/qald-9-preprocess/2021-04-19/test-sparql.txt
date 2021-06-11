@@ -1,0 +1,150 @@
+select distinct ?uri where { res:salt_lake_city onto:timezone ?uri } 
+select distinct ?uri where { ?uri dct:subject dbc:assassins_of_julius_caesar } 
+select ?uri where { ?uri rdf:type onto:mountain ; onto:elevation ?elevation ; onto:locatedinarea res:germany } order by desc(?elevation) limit 1 
+select ?uri where { ?uri dct:subject dbc:presidents_of_the_united_states . res:vietnam_war onto:commander ?uri } 
+select distinct ?uri where { ?uri a <http://dbpedia.org/class/yago/wikicatstatesoftheunitedstates> ; <http://dbpedia.org/property/governor> res:butch_otter } 
+select count(?sub) as ?c where { ?sub onto:goldmedalist res:michael_phelps . filter (contains (str(?sub), "2008") && contains (str(?sub), "olympics")) } 
+select distinct ?uri where { ?uri a onto:artist . res:rachel_stevens onto:birthdate ?birthdate . ?uri onto:birthdate ?birthdate } 
+select distinct ?string where { res:frank_herbert dbpedia2:occupation ?string } 
+ask where { res:taiko a <http://dbpedia.org/class/yago/wikicatjapanesemusicalinstruments> } 
+select ?capacity where { { res:fc_porto onto:ground ?ground . ?ground onto:capacity ?capacity } union { res:fc_porto onto:ground ?ground . ?ground dbp:capacity ?capacity } } 
+select ?uri where { ?airline <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/airline> . ?airline dbp:frequentflyer ?uri. } group by ?uri order by desc(count(distinct ?airline)) offset 0 limit 1 
+select ?uri where { ?uri dct:subject dbc:countries_in_europe ; onto:governmenttype res:constitutional_monarchy } 
+select distinct ?uri where { ?cave rdf:type onto:cave ; onto:location ?uri . ?uri rdf:type onto:country } group by ?uri having ( count(?cave) > 2 ) 
+select distinct ?uri where { ?uri a <http://dbpedia.org/ontology/airport> { ?uri <http://dbpedia.org/ontology/location> res:california } union { ?uri <http://dbpedia.org/ontology/city> res:california> } union { ?uri <http://dbpedia.org/ontology/city> ?city . ?city <http://dbpedia.org/ontology/ispartof> res:california> } union { ?uri <http://dbpedia.org/ontology/operator> res:california> } } 
+select distinct ?string where { res:san_francisco foaf:nick ?string } 
+select distinct ?string where { res:angela_merkel dbp:birthname ?string } 
+select distinct ?uri where { res:berlin dbp:leader ?uri } 
+select distinct ?uri where { ?uri a <http://dbpedia.org/ontology/country> { ?uri <http://dbpedia.org/ontology/currency> res:euro } union { ?uri <http://dbpedia.org/property/currencycode> "eur"@en } } 
+select distinct ?uri where { ?uri rdf:type onto:software { ?uri prop:publisher "mean hamster software"@en } union { ?uri onto:publisher res:mean_hamster_software } } 
+select distinct ?country where { { res:bill_gates onto:birthplace ?birthplace . ?birthplace onto:country ?country } union { res:bill_gates onto:birthplace ?birthplace . ?birthplace onto:ispartof ?place . ?place onto:country ?country } } 
+select count(distinct ?y as ?y) where { res:jacques_cousteau <http://dbpedia.org/ontology/child> ?x . ?x <http://dbpedia.org/ontology/child> ?y . } 
+select distinct ?uri where { ?uri onto:occupation res:skateboarder { ?uri onto:birthplace res:sweden } union { ?uri onto:birthplace ?place . ?place onto:country res:sweden } } 
+select distinct ?uri where { ?uri rdf:type yago:wikicatmonarchsoftheunitedkingdom ; onto:spouse ?spouse . ?spouse onto:birthplace res:germany } 
+select distinct ?uri where { { ?uri rdf:type yago:argentinefilms } union { ?uri rdf:type onto:film { ?uri onto:country res:argentina } union { ?uri dbp:country "argentina"@en } } } 
+select distinct ?s where { res:michael_jackson <http://dbpedia.org/property/deathcause> ?s } 
+select distinct ?uri where { ?uri dct:subject dbc:states_of_the_united_states ; dbp:admittancedate ?x } order by desc(?x) limit 1 
+select distinct ?string where { res:millipede dbp:taxon ?string } 
+select distinct ?string where { res:forbes foaf:homepage ?string } 
+select distinct ?uri where { ?uri <http://dbpedia.org/ontology/spouse> res:amanda_palmer } 
+select distinct ?uri where { res:the_storm_on_the_sea_of_galilee onto:author ?uri } 
+select distinct ?uri where { res:karakoram dbp:highest ?uri } 
+select distinct ?date where { res:finland dbp:accessioneudate ?date } 
+select distinct ?uri where { res:the_big_bang_theory <http://dbpedia.org/ontology/starring> ?uri } 
+select distinct ?uri where { ?uri <http://dbpedia.org/ontology/field> res:computer_science ; <http://dbpedia.org/ontology/award> res:academy_award> } 
+select distinct ?uri where { res:harry_potter <http://dbpedia.org/property/author> ?uri } 
+select distinct ?uri where { ?uri a <http://dbpedia.org/ontology/writer> ; <http://dbpedia.org/ontology/award> res:nobel_prize_in_literature } 
+select distinct ?uri where { res:lovesick_(1983_film) onto:starring ?uri . ?uri onto:birthplace ?city . ?city onto:country res:united_kingdom> } 
+select ?nm where { res:baghdad foaf:nick ?nm } 
+select distinct ?uri where { ?x dbp:title res:president_of_montenegro ; onto:birthplace ?uri . ?uri onto:type res:capital_city } 
+select ?uri where { ?uri <http://dbpedia.org/ontology/country> res:united_states . ?uri <http://dbpedia.org/ontology/capital> ?capital . ?uri <http://dbpedia.org/property/densityrank> ?density . optional {?uri <http://www.w3.org/2000/01/rdf-schema#label> ?string. filter (lang(?string) = 'en') } } order by asc(?density) limit 1 
+select distinct ?uri where { ?uri a <http://dbpedia.org/ontology/river> ; <http://dbpedia.org/ontology/country> res:china ; <http://dbpedia.org/property/length> ?l } order by desc(?l) offset 0 limit 1 
+select distinct ?string where { res:berlin onto:areacode ?string } 
+select (count(distinct ?uri) as ?c) where { ?uri a <http://dbpedia.org/ontology/scientist> ; <http://dbpedia.org/ontology/almamater> ?university . ?university <http://dbpedia.org/ontology/affiliation> res:ivy_league ; a <http://dbpedia.org/ontology/university> } 
+select distinct ?uri where { { ?uri onto:occupation res:surfer ; onto:birthplace res:australia } union { ?uri onto:occupation res:surfer ; onto:birthplace ?place . ?place onto:country res:australia } } 
+select distinct ?uri where { ?uri a <http://dbpedia.org/ontology/politicalparty> ; <http://dbpedia.org/ontology/country> res:netherlands } 
+select distinct ?n where { res:mars <http://dbpedia.org/property/satellites> ?n } 
+select distinct ?label where { <http://dbpedia.org/resource/batman> foaf:name ?label filter ( str(?label) != "batman" ) } 
+select distinct ?uri where { res:elon_musk <http://dbpedia.org/ontology/knownfor> ?uri } 
+select ?uri where { res:wikileaks onto:author ?uri } 
+select distinct ?uri where { res:sean_parnell onto:region ?uri } 
+select ?years where { res:ford_model_t onto:productionendyear ?end ; onto:productionstartyear ?start. bind ( ( year(xsd:date(?end)) - year(xsd:date(?start)) ) as ?years) } 
+select distinct xsd:date(?date) where { res:death_of_carlo_giuliani onto:deathdate ?date } 
+select distinct ?uri where { ?uri a onto:animal ; onto:conservationstatus> "ex" } 
+select ?uri ?string where { res:abraham_lincoln onto:spouse ?uri } 
+select (count(?awards) as ?counter) where { res:bertrand_russell dbp:awards ?awards } 
+ask where { res:pamela_anderson a yago:wikicatamericanvegans } 
+select distinct ?s where { ?s dct:subject dbc:missions_to_the_sun ; rdf:type ?type filter ( ?type in (onto:satellite, onto:artificialsatellite) ) } 
+select distinct ?uri where { { ?uri a <http://dbpedia.org/ontology/city> } union { ?uri a <http://dbpedia.org/ontology/town> } ?uri <http://dbpedia.org/ontology/country> res:germany ; <http://dbpedia.org/ontology/populationtotal> ?population filter ( ?population > 250000 ) } 
+select distinct ?uri where { res:robert_f._kennedy <http://dbpedia.org/ontology/child> ?child . ?child <http://dbpedia.org/ontology/spouse> ?uri } 
+select distinct ?num where { res:vrije_universiteit_amsterdam onto:numberofstudents ?num } 
+select ?number where { res:ibm onto:revenue ?number } 
+select (count(distinct ?uri) as ?c) where { ?uri dct:subject res:category:james_bond_films } 
+select distinct ?uri where { res:bart_simpson <http://dbpedia.org/property/voiceactor> ?uri } 
+select distinct ?uri where { res:tom_hanks onto:spouse ?uri } 
+select distinct ?uri where { res:yenisei_river onto:country ?uri } 
+select distinct ?uri where { ?uri a <http://dbpedia.org/ontology/automobile> { ?uri <http://dbpedia.org/ontology/assembly> res:germany } union { ?uri <http://dbpedia.org/property/assembly> res:germany> } union { { ?uri <http://dbpedia.org/ontology/manufacturer> ?x } union { ?uri <http://dbpedia.org/property/manufacturer> ?x } { ?x <http://dbpedia.org/ontology/locationcountry> res:germany> } union { ?x <http://dbpedia.org/ontology/location> res:germany> } } } 
+select distinct ?date where { res:michael_jackson <http://dbpedia.org/ontology/deathdate> ?date } 
+select distinct ?uri where { ?uri a onto:volcano ; onto:locatedinarea> ?area . ?area dct:subject dbc:countries_in_africa . ?uri onto:elevation> ?elevation } order by desc(?elevation) limit 1 
+select distinct ?uri where { ?uri <http://dbpedia.org/ontology/occupation> res:poet . ?x <http://dbpedia.org/ontology/author> ?uri . ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/book> . } order by desc(count(?x)) offset 0 limit 1 
+select distinct ?uri where { ?uri onto:occupation res:gangster ; dct:subject dbc:prohibition-era_gangsters } 
+select distinct ?s where { ?s dct:subject dbc:mars_rovers ; rdf:type ?type filter ( ?type in (onto:satellite, onto:artificialsatellite) ) } 
+select distinct ?uri where { ?uri a <http://dbpedia.org/ontology/film> ; <http://dbpedia.org/ontology/country> res:czech_republic } 
+select distinct ?uri where { { ?uri a <http://dbpedia.org/ontology/astronaut> ; <http://dbpedia.org/ontology/nationality> res:people's_republic_of_china } union { ?uri a <http://dbpedia.org/ontology/astronaut> ; <http://dbpedia.org/ontology/nationality> res:china> } } 
+select distinct ?uri where { ?x a onto:volcano ; onto:locatedinarea> ?uri . ?uri a onto:country> } group by ?uri having ( count(?x) > 10 ) 
+select distinct ?uri where { ?uri rdf:type onto:film { ?uri prop:starring res:tom_cruise } union { ?uri onto:starring res:tom_cruise } optional { ?uri rdfs:label ?string filter ( lang(?string) = "en" ) } } 
+select distinct xsd:date(?date) where { res:count_dracula <http://dbpedia.org/ontology/creator> ?x . ?x <http://dbpedia.org/ontology/deathdate> ?date. } 
+select ?uri where { res:wikipedia onto:author ?uri } 
+select distinct ?uri where { res:chancellor_of_germany dbp:incumbent ?uri } 
+select distinct ?uri where { res:aldi dbp:founders ?uri } 
+select ?uri where { ?uri rdf:type onto:book ; onto:author res:danielle_steel } 
+select distinct ?uri where { ?uri <http://dbpedia.org/ontology/influencedby> res:socrates } 
+select distinct ?n where { res:chiemsee <http://dbpedia.org/ontology/maximumdepth> ?n } 
+select distinct ?uri where { ?uri a onto:company ; onto:industry res:aerospace ; onto:industry res:medical } 
+select distinct ?uri where { ?uri onto:occupation res:surfer ; onto:birthplace res:philippines } 
+select distinct ?uri where { res:queen_victoria onto:parent ?uri } 
+ask where { ?uri dct:subject dbc:castles_in_the_united_states } 
+select distinct ?uri where { ?uri <http://dbpedia.org/ontology/spokenin> res:estonia } 
+select distinct ?uri ?p where { ?uri rdf:type onto:bird { ?uri onto:conservationstatus "cr" } union { ?uri dct:subject dbc:critically_endangered_animals } } 
+select distinct ?uri where { {res:rhine onto:country ?uri } union {res:rhine dbp:country ?uri} } 
+select distinct * where { res:elizabeth_ii onto:parent ?uri . ?uri foaf:gender "male"@en } 
+select distinct ?uri where { ?uri rdf:type owl:thing ; dct:subject dbc:chemical_elements } 
+select distinct ?uri where { ?uri rdf:type onto:person ; dct:subject dbc:presidents_of_the_united_states ; onto:activeyearsenddate ?termend filter ( ( year(now()) - year(?termend) ) <= 20 ) } 
+select distinct ?rel where { res:worst_case_scenario_(film) ?p ?o ; onto:releasedate ?rel filter contains(lcase(str(?o)), "netherlands") } 
+select distinct ?uri where { {res:lance_bass onto:spouse ?uri} union {?uri onto:spouse res:lance_bass>} } 
+select distinct ?uri where { res:tui_travel <http://dbpedia.org/ontology/subsidiary> ?uri . ?uri <http://dbpedia.org/ontology/targetairport> res:glasgow_international_airport> ; <http://dbpedia.org/ontology/targetairport> res:dublin_airport> } 
+select distinct ?uri where { res:pakistan <http://dbpedia.org/ontology/language> ?uri } 
+select distinct ?uri where { res:bill_clinton onto:child ?child . ?child onto:spouse ?uri . ?uri rdfs:label ?string } 
+select distinct ?uri where { res:apollo_11 <http://dbpedia.org/property/crewmembers> ?uri } 
+select ?n where { res:indigo onto:wavelength ?n } 
+select distinct ?string where { ?x onto:musicalartist res:ramones ; onto:bside ?string } 
+select ?uri where { ?uri onto:alias ?alias filter contains(lcase(?alias), "scarface") } 
+select distinct ?uri where { ?uri a <http://dbpedia.org/ontology/river> ; <http://dbpedia.org/ontology/rivermouth> res:north_sea } 
+select distinct ?uri where { res:fort_knox <http://dbpedia.org/ontology/location> ?uri. ?uri a <http://dbpedia.org/ontology/place>. } 
+select distinct ?uri where { ?uri rdf:type yago:wikicatdaughtersofbritishearls ; onto:birthplace ?x ; onto:deathplace ?y filter ( ?x = ?y ) } 
+select count(distinct ?uri as ?uri) where { ?uri <http://dbpedia.org/property/title> res:emperor_of_china . } 
+select distinct ?s where { res:teenage_mutant_ninja_turtles <http://dbpedia.org/property/members> ?x . ?x foaf:givenname ?s } 
+select distinct ?uri where { ?uri <http://dbpedia.org/ontology/routestart> res:piccadilly } 
+select distinct ?s where { res:barack_obama <http://dbpedia.org/ontology/spouse> ?x . ?x <http://dbpedia.org/ontology/almamater> ?s } 
+select distinct ?date where { res:paraguay <http://dbpedia.org/ontology/foundingdate> ?date } 
+select distinct ?n where { ?x a <http://dbpedia.org/ontology/basketballplayer> ; <http://dbpedia.org/ontology/league> res:national_basketball_association ; <http://dbpedia.org/ontology/height> ?n filter not exists { ?x <http://dbpedia.org/ontology/activeyearsendyear> ?d } } order by asc(?n) offset 0 limit 1 
+select distinct ?uri where { res:abraham_lincoln onto:deathplace ?uri } 
+select distinct xsd:date(?year) where { res:jack_wolfskin onto:foundingyear ?year } 
+select distinct ?uri where { res:air_china <http://dbpedia.org/ontology/headquarter> ?uri . ?uri a <http://dbpedia.org/class/yago/city108524735> } 
+select distinct xsd:date(?num) where { res:pilsner_urquell <http://dbpedia.org/property/brewery> ?uri . ?uri onto:foundingyear ?num } 
+select distinct ?d where { res:boston_tea_party <http://dbpedia.org/property/date> ?d } 
+select distinct ?uri where { ?uri a onto:animal ; onto:conservationstatus> "cr" } 
+select distinct ?uri where { ?uri a <http://dbpedia.org/ontology/politician> ; <http://dbpedia.org/ontology/spouse> ?spouse { ?spouse <http://dbpedia.org/ontology/birthplace> res:germany } union { ?spouse <http://dbpedia.org/ontology/birthplace> ?p . ?p <http://dbpedia.org/ontology/country> res:germany> } } 
+select distinct (( xsd:double(?radius) * 2 ) as ?diameter) where { res:earth onto:meanradius ?radius } 
+ask where { res:barack_obama onto:spouse ?spouse . ?spouse rdfs:label ?name filter regex(?name, "michelle") } 
+select distinct ?uri where { ?uri a yago:wikicatstatesoftheunitedstates ; dbp:postalabbreviation "mn"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langstring> } 
+select distinct xsd:date(?date) where { res:muhammad onto:deathdate ?date } 
+select distinct ?uri where { res:moon <http://dbpedia.org/property/atmospherecomposition> ?uri } 
+select distinct ?string where { res:texas dbp:governor ?string } 
+select ?uri where { ?uri rdf:type onto:film ; onto:director res:akira_kurosawa } 
+select ?uri where { ?uri a onto:militaryconflict ; onto:place res:san_antonio ; onto:date ?date filter ( ?date > "1835-12-31t00:00:00z"^^xsd:datetime ) filter ( ?date <= "1836-12-31t00:00:00z"^^xsd:datetime ) } 
+select distinct ?uri where { res:charmed onto:starring ?actors . ?actors foaf:homepage ?uri } 
+select distinct ?n where { res:baguette <http://dbpedia.org/property/calories> ?n } 
+select distinct ?uri where { ?uri a <http://dbpedia.org/ontology/library> ; dbp:established ?year filter ( ?year < 1400 ) } 
+select distinct ?uri where { ?uri rdf:type yago:wikicatfrisianislands ; onto:country res:netherlands } 
+select distinct ?uri where { res:the_scream onto:museum ?uri } 
+select distinct xsd:date(?date) where { res:de_beers onto:foundingyear ?date } 
+select distinct ?uri where { res:john_f._kennedy <http://dbpedia.org/property/presidentend> ?x . ?uri <http://dbpedia.org/property/presidentstart> ?x; a <http://dbpedia.org/ontology/person>. } 
+select distinct ?uri where { res:juan_carlos_i_of_spain onto:spouse ?x . ?x onto:parent ?uri } 
+select ?novelist where { res:a_song_of_ice_and_fire dbp:author ?novelist } 
+select ?studio where { ?album onto:artist res:the_beatles ; rdf:type onto:album ; onto:releasedate ?date ; dbp:studio ?studio } order by asc(?date) limit 1 
+select ?company where { ?company dct:subject dbc:companies_based_in_north_rhine-westphalia ; rdf:type onto:brewery } 
+select distinct xsd:date(?d) where { res:diana,_princess_of_wales <http://dbpedia.org/ontology/deathdate> ?d } 
+select distinct ?uri where { res:intel <http://dbpedia.org/property/founders> ?uri } 
+select distinct ?uri where { ?uri onto:team ?team . ?league onto:league res:premier_league . ?league onto:team ?team . ?uri onto:birthdate ?date } order by desc(?date) limit 1 
+select distinct ?uri where { res:cat_stevens <http://dbpedia.org/ontology/instrument> ?uri } 
+select (count(distinct ?uri) as ?count) where { { ?uri onto:location res:south_carolina ; rdf:type onto:lake } union { ?uri dct:subject dbc:rivers_and_streams_of_south_carolina } } 
+select distinct ?uri where { ?uri foaf:nick "rodzilla"@en } 
+select distinct ?uri where { ?country dct:subject dbc:countries_in_africa ; onto:capital ?uri } 
+select distinct ?bridge where { res:manhattan_bridge onto:type ?type . ?bridge onto:type ?type ; rdf:type onto:bridge } 
+select (count(distinct ?x) as ?c) where { res:facebook <http://dbpedia.org/ontology/foundedby> ?uri . ?x <http://dbpedia.org/ontology/foundedby> ?uri } 
+select distinct ?uri where { ?uri <http://dbpedia.org/property/trailheads> res:grand_canyon filter not exists { ?uri <http://dbpedia.org/property/hazards> res:flash_flood> } } 
+select distinct ?uri where { ?uri rdf:type onto:book ; onto:numberofpages ?n } order by desc(?n) offset 0 limit 1 
+select ?uri where { ?uri dct:subject dbc:states_of_the_united_states ; rdf:type onto:administrativeregion ; onto:areatotal ?area } order by desc(?area) offset 0 limit 1 
+select distinct ?web where { ?sub onto:numberofemployees ?obj . ?sub foaf:homepage ?web filter( xsd:integer(?obj) > 500000 ) . } 
+select ?uri where { ?uri rdf:type onto:ship ; dct:subject dbc:christopher_columbus ; dct:subject dbc:exploration_ships } 
