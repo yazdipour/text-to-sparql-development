@@ -1,25 +1,46 @@
 # Text 2 SPARQL
 
-python examples/pytorch/seq2seq/run_translation.py \
-    --model_name_or_path t5-small \
-    --do_train \
-    --do_eval \
-    --source_lang en \
-    --target_lang sq \
-    --source_prefix "translate English to SPARQL: " \
-    --dataset_name stas/wmt14-en-de-pre-processed \
-    --output_dir /tmp/tst-translation \
-    --per_device_train_batch_size=4 \
-    --per_device_eval_batch_size=4 \
-    --overwrite_output_dir \
-    --predict_with_generate
-    
+- (itm prop vlu) 
+- Q=identifier
+P- =Property
+
+## Wikidata Q/Ps
+
+[Dictionary of all properties and identifiers in Wikidata](https://www.kaggle.com/kenshoresearch/kdwd-wikidata-small-ontology)
+
+## Data Sample
+
+- <https://huggingface.co/datasets/lc_quad>
+- <https://huggingface.co/datasets/viewer/?dataset=lc_quad>
+
+```json
+{'NNQT_question': 'What is the {periodical literature} for {mouthpiece} of {Delta Air Lines}',
+
+ 'paraphrased_question': "What is Delta Air Line's periodical literature mouthpiece?",
+
+'question': 'What periodical literature does Delta Air Lines use as a moutpiece?',
+
+'sparql_dbpedia18': 'select distinct ?obj where { ?statement <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <http://wikidata.dbpedia.org/resource/Q188920> . ?statement <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://www.wikidata.org/entity/P2813> . ?statement <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> ?obj . ?obj <http://www.wikidata.org/entity/P31> <http://wikidata.dbpedia.org/resource/Q1002697> } ',
+
+'sparql_wikidata': ' select distinct ?obj where { wd:Q188920 wdt:P2813 ?obj . ?obj wdt:P31 wd:Q1002697 } ',
+
+'subgraph': 'simple question right',
+
+'template': ' <S P ?O ; ?O instanceOf Type>',
+
+'template_index': 65,
+
+'uid': 19719}
+```
+
 ## Tools
 
+- Parsing SPARQL: https://github.com/yazdipour/sparql_parser
 - https://github.com/BonaBeavis/tree-sitter-sparql
 - Function Parser used in CodeSearchNet: https://github.com/ncoop57/function_parser
 - DBPedia Query Service: https://dbpedia.org/sparql/
 - wikidata Query Service: https://query.wikidata.org/
+- Python Wikidata proxy: https://github.com/kensho-technologies/qwikidata
 
 ## Researches
 
@@ -38,6 +59,11 @@ python examples/pytorch/seq2seq/run_translation.py \
 - https://github.com/deepmipt/DeepPavlov/blob/master/deeppavlov/models/kbqa/wiki_parser.py
 
 # Dataset
+
+## WikiMedia
+
+- https://www.kaggle.com/kenshoresearch/kensho-derived-wikimedia-data
+- Properties with popularity: https://github.com/iacs-capstone-kensho/named-entity-linking/blob/master/data/generate_properties.ipynb
 
 ## QALD
 
