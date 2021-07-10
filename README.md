@@ -13,7 +13,7 @@ P- =Property
 - <https://huggingface.co/datasets/lc_quad>
 - <https://huggingface.co/datasets/viewer/?dataset=lc_quad>
 
-```json
+```
 {'NNQT_question': 'What is the {periodical literature} for {mouthpiece} of {Delta Air Lines}',
 
  'paraphrased_question': "What is Delta Air Line's periodical literature mouthpiece?",
