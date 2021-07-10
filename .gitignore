@@ -3,3 +3,4 @@ try/
 runs/
 *.pyc
 data/models
+data/kdwd
