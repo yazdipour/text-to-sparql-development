@@ -1,5 +1,7 @@
 # Text 2 SPARQL
 
+- Lc-quad-v2 dataset modified for T5 Text-to-SPARQL: https://huggingface.co/datasets/yazdipour/text-to-sparql-t5-lc-quad-v2
+- T5 Text-to-SPARQL Generated Model: https://drive.google.com/drive/folders/1VnuEVRLF32ZLreYzbWKI1jVJqmHQZzv3?usp=sharing
 - (itm prop vlu) 
 - Q=identifier
 P- =Property
