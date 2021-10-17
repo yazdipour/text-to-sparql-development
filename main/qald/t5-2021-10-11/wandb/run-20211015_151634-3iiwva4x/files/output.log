@@ -1,0 +1,10 @@
+select distinct ?uri where [ res:Salt_Lake_City onto:timeZone ?uri ]
+ what is the time zone of salt lake city?
+ {'input_ids': [125, 19, 8, 97, 2901, 13, 3136, 6957, 690, 58, 1], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+2021-10-15
+2021-10-15
+2021-10-15
+ 85 299
+100%|██████████| 408/408 [00:00<00:00, 295761.50it/s]
+Some weights of the model checkpoint at roberta-large were not used when initializing RobertaModel: ['lm_head.layer_norm.bias', 'lm_head.layer_norm.weight', 'lm_head.decoder.weight', 'lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias']
+- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
